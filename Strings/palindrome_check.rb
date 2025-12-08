@@ -3,14 +3,20 @@
 # Example: "racecar" => true, "hello" => false
 
 def palindrome_check(s)
-  forward = s.downcase
-  reverse = s.reverse.downcase
- 
-  if forward == reverse
-    puts "#{forward} == #{reverse} \nThis is a palindrome"
-  else
-    puts "#{forward} != #{reverse} \nThis is not a palindrome"
+  str = s.downcase.gsub(/[^a-z0-9]/, '')
+  left_index = 0
+  right_index = str.length - 1
+
+  while left_index < right_index
+    if str[left_index] != str[right_index]
+      puts "#{str} is not a palindrome"
+      return false
+    end
+    left_index += 1
+    right_index -= 1
   end
+  puts "#{str} is a palindrome"
+  return true
 end
 
-palindrome_check("Racecar")
+palindrome_check("Raceedar")

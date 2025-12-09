@@ -4,20 +4,21 @@
 
 def compress_string(s)
   return "" if s.empty?
+  
   result = ""
-  index = 0
+  current_char = s[0]
+  count = 0
 
-  while index < s.length
-    current_char = s[index]
-    count = 1
-
-    while index + count < s.length && s[index + count] == current_char
+  s.each_char do |char|
+    if char == current_char
       count += 1
+    else
+      result += current_char + count.to_s
+      current_char = char
+      count = 1
     end
-
-    result += current_char + count.to_s
-    index += count
   end
+  result += current_char + count.to_s
   result
 end
 

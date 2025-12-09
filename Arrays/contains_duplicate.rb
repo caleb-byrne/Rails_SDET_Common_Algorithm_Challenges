@@ -10,8 +10,7 @@ def contains_duplicate?(nums)
     return true if seen.include?(num)
     seen.add(num)
   end
-
-  "False array does not contain duplicates"
+  false
 end
 
 puts contains_duplicate?([1, 2, 3, 1])

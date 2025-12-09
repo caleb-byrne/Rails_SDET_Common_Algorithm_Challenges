@@ -8,6 +8,12 @@ def is_anagram?(s, t)
     freq = {}
     s.each_char { |char| freq[char] = (freq[char] || 0) + 1 }
     t.each_char { |char| freq[char] = (freq[char] || 0) - 1 }
+
+    if freq == 0
+        "true: #{s} and #{t} are anagrams"
+    else
+        "false: #{s} and #{t} aren't anagrams"
+    end
 end
 
 puts is_anagram?("listen", "silint")

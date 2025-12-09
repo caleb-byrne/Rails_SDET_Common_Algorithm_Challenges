@@ -3,20 +3,22 @@
 # Example: "racecar" => true, "hello" => false
 
 def palindrome_check(s)
-  str = s.downcase.gsub(/[^a-z0-9]/, '')
-  left_index = 0
-  right_index = str.length - 1
+  s = s.downcase.gsub(/[^a-z0-9]/, '') # Normalize the string
+  left = 0
+  right = s.length - 1
+  helper(s, left, right)
+end
 
-  while left_index < right_index
-    if str[left_index] != str[right_index]
-      puts "#{str} is not a palindrome"
-      return false
-    end
-    left_index += 1
-    right_index -= 1
+def helper(s, left, right)
+  if left >= right
+    puts "true #{s} is a palindrome"
+    return true
+  elsif s[left] != s[right]
+    puts "false #{s} is not a palindrome"
+    return false
+  else
+    helper(s, left + 1, right - 1)
   end
-  puts "#{str} is a palindrome"
-  return true
 end
 
 palindrome_check("Raceedar")

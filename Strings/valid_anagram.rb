@@ -3,12 +3,11 @@
 # Example: "listen" and "silent" => true
 
 def is_anagram?(s, t)
-  if s.length != t.length
-    return "false: #{s} and #{t} aren't anagrams"
-  else
-    return "true: #{s} and #{t} are anagrams" if s.chars.sort == t.chars.sort
-    return "false: #{s} and #{t} aren't anagrams"
-  end
+    return "false: #{s} and #{t} aren't anagrams"  if s.length != t.length
+  
+    freq = {}
+    s.each_char { |char| freq[char] = (freq[char] || 0) + 1 }
+    t.each_char { |char| freq[char] = (freq[char] || 0) - 1 }
 end
 
 puts is_anagram?("listen", "silint")

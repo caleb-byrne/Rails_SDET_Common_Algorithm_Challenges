@@ -4,11 +4,10 @@ require 'set'
 # Example: [1, 2, 3, 1] => true
 
 def contains_duplicate?(nums)
-  seen = Hash.new
+  sorted = nums.sort
 
-  nums.each do |num|
-    return true if seen[num]
-    seen[num] = true
+  sorted.each_with_index do |num, index|
+    return true if index < sorted.length - 1 && sorted[index] == sorted[index + 1]
   end
   false
 end

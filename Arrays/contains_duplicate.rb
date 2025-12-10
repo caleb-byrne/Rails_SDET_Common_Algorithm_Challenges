@@ -4,11 +4,11 @@ require 'set'
 # Example: [1, 2, 3, 1] => true
 
 def contains_duplicate?(nums)
-  seen = Set.new
+  seen = Hash.new
 
   nums.each do |num|
-    return true if seen.include?(num)
-    seen.add(num)
+    return true if seen[num]
+    seen[num] = true
   end
   false
 end

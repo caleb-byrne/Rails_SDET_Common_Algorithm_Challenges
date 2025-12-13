@@ -3,8 +3,16 @@
 # Example: [2, 3, -2, 4] => 12
 
 def max_product(nums)
-  ordered = nums.sort
-  [ordered[-1] * ordered[-2], ordered[0] * ordered[1]].max
+  max_so_far = -Float::INFINITY
+  max_num = nums.max
+  min_num = nums.min
+
+  nums.length.each do |i|
+    max_so_far = [max_so_far, max_num * nums[i], min_num * nums[i]].max
+    max_num = [max_num, nums[i]].max
+    min_num = [min_num, nums[i]].min
+  end
+  max_so_far
 end
 
 
